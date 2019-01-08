@@ -12,12 +12,12 @@ Node.js
 # Setup
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-Prerequisites
+## Prerequisites
 
 Running the server code requires `nodemon`. If you don't already have `nodemon`, install it globally with `npm install nodemon --global`. 
 Between the server and client, you'll need two terminal tabs because we're using `nodemon`, both our client side and server side will automatically spin back up when changes are made!
 
-Installing
+## Installing
 Steps to get the development environment running.
 
 Download this project.
