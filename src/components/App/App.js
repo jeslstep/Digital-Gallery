@@ -22,7 +22,24 @@ class App extends Component {
      
    }
 
-   addPicture = (event) => {
+  // get gallery entries from postgreSQL
+  componentDidMount() {
+   this.getGallery();
+  }
+
+  // get gallery entries
+  getGallery = () => {
+    axios.get('/gallery').then(response => {
+      this.setState({
+        galleryList: response.data
+      })
+    }).catch(error => {
+      alert('Error making/ gallery GET request', error);
+    })
+  }
+
+  // add a picture and description 
+  addPicture = (event) => {
      event.preventDefault();
      axios({
        method: 'POST',
@@ -42,7 +59,7 @@ class App extends Component {
      })
    }
 
-
+  // add a like to a entry
   addLike = (imageId) => {
       axios({
         method: 'PUT',
@@ -54,6 +71,7 @@ class App extends Component {
       });
     }
 
+  // delete an entry
   deleteLike = (imageId) => {
        axios({
          method: 'DELETE',
@@ -65,23 +83,8 @@ class App extends Component {
        });
      }
 
-  componentDidMount() {
-   this.getGallery();
-   
-  }
-
-  getGallery = () => {
-    axios.get('/gallery').then(response => {
-      this.setState({
-        galleryList: response.data
-        
-      })
-    }).catch(error => {
-      alert('Error making/ gallery GET request', error);
-    })
-  }
-
-   handleChangeFor = (propertyName) => {
+  // set user input in state  
+  handleChangeFor = (propertyName) => {
      return (event) => {
        this.setState({
          newGalleryEntry: {
@@ -93,7 +96,7 @@ class App extends Component {
    }
 
 
-    render() {
+  render() {
       return (
         <div className="App">
           <header className="App-header">
@@ -102,7 +105,8 @@ class App extends Component {
           <br/>
           <h2>Add to Gallery</h2>
           <div>
-          <FileUpload />
+          <FileUpload getGallery ={this.getGallery}
+          />
           </div>
           <br/>
           <GalleryForm handleChangeFor= {this.handleChangeFor}

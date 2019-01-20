@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
 import {storage} from '../../firebase/config';
+import axios from 'axios';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 class FileUpload extends Component {
 
     // state to store selected file
     state ={
         selectedFile: '',
-        file_url: ''
+        newGalleryEntry: {
+            picture_path: '',
+            likes: 0,
+            picture_description: '',
+        }
     }
 
     // get file from input
@@ -39,11 +46,15 @@ class FileUpload extends Component {
                 alert("Great job!", "File successfully uploaded!", "success");
                 // Sets local state to include the new file URL
                 this.setState({
-                    file_url: thisUrl,
+                     newGalleryEntry: {
+                        ...this.state.newGalleryEntry,
+                        picture_path: thisUrl
+                    }
                 });
                 })
                 .then((result) => {
                 console.log('result', result);
+                this.addPicture();
                 })
                 .catch((error) => {
                 console.log('Error with uploadFile function after complete', error);
@@ -52,17 +63,57 @@ class FileUpload extends Component {
       ) // end uploadTask.on
     }
 
+    // set user input in state  
+    handleChangeFor = (propertyName) => {
+        return (event) => {
+            this.setState({
+                newGalleryEntry: {
+                    ...this.state.newGalleryEntry,
+                    [propertyName]: event.target.value
+                }
+            });
+        }
+    }
+
+    // add a picture and description 
+    addPicture = (event) => {
+        axios({
+        method: 'POST',
+        url: '/gallery',
+        data: this.state.newGalleryEntry
+        }).then(response => {
+        this.props.getGallery();
+        this.setState({
+            newGalleryEntry: {
+                picture_path: '',
+                picture_description: '',
+                likes: 0,
+            }
+        })
+        }).catch(error => {
+        alert('Error', error);
+        })
+    }
+
   render() {
     return (
         <div>
-            <div>
-        {JSON.stringify(this.state)}
-        </div>
-        <br/>
         <div>
-            <input type="file" onChange={this.handleSelectedFile}/>
-            <button onClick={this.handleFileUpload}>Upload</button>
+            <TextField 
+            type="file" 
+            onChange={this.handleSelectedFile}
+            />
+            <TextField
+                id="standard-name"
+                label="Description"
+                value={this.state.newGalleryEntry.picture_description}
+                onChange={this.handleChangeFor('picture_description')}
+                margin="normal"
+            />
+            <br/>
+            <Button onClick={this.handleFileUpload} color='primary' varient='contained'>Add to Gallery</Button>
         </div>
+        <h3>Or</h3>
         </div>
     );
   }
