@@ -84,6 +84,7 @@ class FileUpload extends Component {
         }).then(response => {
         this.props.getGallery();
         this.setState({
+            selectedFile: '',
             newGalleryEntry: {
                 picture_path: '',
                 picture_description: '',
