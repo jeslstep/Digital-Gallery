@@ -3,6 +3,7 @@ import './App.css';
 import axios from 'axios';
 import GalleryList from '../GalleryList/GalleryList'
 import GalleryForm from '../GalleryForm/GalleryForm';
+import FileUpload from '../FileUpload/FileUpload';
 
 
 
@@ -94,14 +95,17 @@ class App extends Component {
 
     render() {
       return (
-        
         <div className="App">
           <header className="App-header">
             <h1 className="App-title">Gallery</h1>
           </header>
           <br/>
           <h2>Add to Gallery</h2>
-          < GalleryForm handleChangeFor= {this.handleChangeFor}
+          <div>
+          <FileUpload />
+          </div>
+          <br/>
+          <GalleryForm handleChangeFor= {this.handleChangeFor}
           handleSubmit={this.addPicture} 
           newGalleryEntry = {this.state.newGalleryEntry}/>
           <h2>Click Image to Veiw Description</h2>

@@ -35,6 +35,7 @@ Feature addCards -- allow users to add a picture url and a description
 Feature storedInPostgreSQL -- picture url and description stored in PostgreSQL database table
 Feature addLikes -- add likes 
 Feature deleteCard -- deletes card 
+Feature firebaseFileUpload -- allows users to upload an image from their computer
 
 # Next Steps
 
