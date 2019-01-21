@@ -104,19 +104,21 @@ class App extends Component {
           </header>
           <br/>
           <h2>Add to Gallery</h2>
-          <div className="floatLeft">
+          <div>
           <FileUpload getGallery ={this.getGallery}
           />
           </div>
-          <div className="floatRight">
+          <div>
           <GalleryForm handleChangeFor= {this.handleChangeFor}
           handleSubmit={this.addPicture} 
           newGalleryEntry = {this.state.newGalleryEntry}/>
           </div>
+          <div>
           <GalleryList 
             imageList={this.state.galleryList}
             addLike={this.addLike}
             deleteLike={this.deleteLike} />
+          </div>
           </div>
     );
   }

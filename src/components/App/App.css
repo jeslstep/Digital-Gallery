@@ -34,12 +34,4 @@ div{
   font-size: large;
 }
 
-.floatRight {
-  float: right;
-  margin-right: 250px;
-}
 
-.floatLeft {
-  float: left;
-  margin-left: 250px;
-}

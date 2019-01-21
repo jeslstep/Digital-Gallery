@@ -3,6 +3,8 @@ import {storage} from '../../firebase/config';
 import axios from 'axios';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 class FileUpload extends Component {
 
@@ -99,23 +101,27 @@ class FileUpload extends Component {
   render() {
     return (
         <div>
-            <h3>Upload File</h3>
-        <div>
-            <TextField 
-            type="file" 
-            onChange={this.handleSelectedFile}
-            />
-            <br/>
-            <TextField
-                id="standard-name"
-                label="Description"
-                value={this.state.newGalleryEntry.picture_description}
-                onChange={this.handleChangeFor('picture_description')}
-                margin="normal"
-            />
-            <br/>
-            <Button onClick={this.handleFileUpload} color='primary' varient='contained'>Add to Gallery</Button>
-        </div>
+            <Card>
+                <CardContent>
+                    <h3>Upload File</h3>
+                        <div>
+                            <TextField 
+                            type="file" 
+                            onChange={this.handleSelectedFile}
+                            />
+                            <br/>
+                            <TextField
+                                id="standard-name"
+                                label="Description"
+                                value={this.state.newGalleryEntry.picture_description}
+                                onChange={this.handleChangeFor('picture_description')}
+                                margin="normal"
+                            />
+                            <br/>
+                            <Button onClick={this.handleFileUpload} color='primary' varient='contained'>Add to Gallery</Button>
+                        </div>
+                </CardContent>
+            </Card>
         </div>
     );
   }

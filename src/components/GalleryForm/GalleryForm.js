@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 
 
@@ -22,6 +24,8 @@ swapImagewithDescription = () => {
   render() {
     return (
         <div>
+          <Card>
+            <CardContent >
           <h3>Image Url</h3>
          <form onSubmit={this.props.handleSubmit}>
         <TextField
@@ -42,6 +46,8 @@ swapImagewithDescription = () => {
        <br/>
         <Button varient="contained" color="primary" type="submit">Add to Gallery</Button>
         </form>
+        </CardContent>
+        </Card>
         </div>
     );
   }
