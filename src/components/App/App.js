@@ -4,7 +4,7 @@ import axios from 'axios';
 import GalleryList from '../GalleryList/GalleryList'
 import GalleryForm from '../GalleryForm/GalleryForm';
 import FileUpload from '../FileUpload/FileUpload';
-
+import Paper from '@material-ui/core/Paper';
 
 
 
@@ -103,6 +103,7 @@ class App extends Component {
             <h1 className="App-title">Gallery</h1>
           </header>
           <br/>
+          <Paper elevation={5}>
           <h2>Add to Gallery</h2>
           <div>
           <FileUpload getGallery ={this.getGallery}
@@ -113,6 +114,7 @@ class App extends Component {
           handleSubmit={this.addPicture} 
           newGalleryEntry = {this.state.newGalleryEntry}/>
           </div>
+          </Paper>
           <div>
           <GalleryList 
             imageList={this.state.galleryList}
