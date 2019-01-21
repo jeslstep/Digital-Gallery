@@ -99,11 +99,13 @@ class FileUpload extends Component {
   render() {
     return (
         <div>
+            <h3>Upload File</h3>
         <div>
             <TextField 
             type="file" 
             onChange={this.handleSelectedFile}
             />
+            <br/>
             <TextField
                 id="standard-name"
                 label="Description"
@@ -114,7 +116,6 @@ class FileUpload extends Component {
             <br/>
             <Button onClick={this.handleFileUpload} color='primary' varient='contained'>Add to Gallery</Button>
         </div>
-        <h3>Or</h3>
         </div>
     );
   }

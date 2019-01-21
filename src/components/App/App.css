@@ -34,7 +34,12 @@ div{
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.floatRight {
+  float: right;
+  margin-right: 250px;
+}
+
+.floatLeft {
+  float: left;
+  margin-left: 250px;
 }

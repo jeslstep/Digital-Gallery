@@ -22,6 +22,7 @@ swapImagewithDescription = () => {
   render() {
     return (
         <div>
+          <h3>Image Url</h3>
          <form onSubmit={this.props.handleSubmit}>
         <TextField
           id="standard-name"
@@ -30,6 +31,7 @@ swapImagewithDescription = () => {
           onChange={this.props.handleChangeFor('picture_path')}
           margin="normal"
         />
+        <br/>
         <TextField
           id="standard-name"
           label="Description"
