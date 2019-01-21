@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 
 
 
+
 class GalleryForm extends Component {
 
 // set up state to toggle image and description

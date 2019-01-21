@@ -5,6 +5,7 @@ import GalleryList from '../GalleryList/GalleryList'
 import GalleryForm from '../GalleryForm/GalleryForm';
 import FileUpload from '../FileUpload/FileUpload';
 import Paper from '@material-ui/core/Paper';
+import swal from 'sweetalert';
 
 
 
@@ -34,7 +35,7 @@ class App extends Component {
         galleryList: response.data
       })
     }).catch(error => {
-      alert('Error making/ gallery GET request', error);
+      swal('Error making/ gallery GET request', error);
     })
   }
 
@@ -46,6 +47,7 @@ class App extends Component {
        url: '/gallery',
        data: this.state.newGalleryEntry
      }).then(response => {
+       swal("Added New gallary entry!", "success");
        this.getGallery();
        this.setState({
          newGalleryEntry: {
@@ -55,7 +57,7 @@ class App extends Component {
          }
        })
      }).catch(error => {
-       alert('Error', error);
+       swal("Unable to Add New gallery entry", "warning", error);
      })
    }
 
@@ -67,7 +69,7 @@ class App extends Component {
       }).then (() => { 
         this.getGallery();
       }).catch (error => {
-        alert('Like put error:', error);
+        swal("Like not recorded", "warning", error);
       });
     }
 
@@ -77,9 +79,10 @@ class App extends Component {
          method: 'DELETE',
          url: `gallery/delete/${imageId}`
        }).then(() => {
+         swal("Deleted!", "success");
          this.getGallery();
        }).catch(error => {
-         alert('Like delete error:', error);
+         swal("Unable to Delete", "Not deleted", "warning", error);
        });
      }
 

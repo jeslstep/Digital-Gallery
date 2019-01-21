@@ -5,6 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import swal from 'sweetalert';
 
 class FileUpload extends Component {
 
@@ -29,7 +30,7 @@ class FileUpload extends Component {
     // send file to firebase storage
     handleFileUpload = () => {
        if (this.state.selectedFile === null) {
-         alert("WARNING!", "Please select a file locally from your computer!", "warning");
+         swal("Please select a file locally from your computer!", "warning");
          return
       }
       // creates the URL that the file will be stored at on FireBase
@@ -45,7 +46,7 @@ class FileUpload extends Component {
                 console.log('complete:', complete);
                 // responds back with the complete URL labeled here as "thisUrl"
                 storage.ref(`img_file`).child(this.state.selectedFile.name).getDownloadURL().then(thisUrl => {
-                alert("Great job!", "File successfully uploaded!", "success");
+                swal("File successfully uploaded!", "success");
                 // Sets local state to include the new file URL
                 this.setState({
                      newGalleryEntry: {
