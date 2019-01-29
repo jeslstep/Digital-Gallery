@@ -103,8 +103,10 @@ class FileUpload extends Component {
     return (
         <div>
             <Card>
-                <CardContent>
+                <CardContent className="inputCards">
                     <h3>Upload File</h3>
+                            <pre>1. Click choose and select a file</pre>
+                            <pre>2. Click "Add to Gallery" to upload, <br/> after adding a description.</pre>
                         <div>
                             <TextField 
                             type="file" 

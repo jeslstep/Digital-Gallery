@@ -26,8 +26,10 @@ swapImagewithDescription = () => {
     return (
         <div>
           <Card>
-            <CardContent >
+            <CardContent className="inputCards" >
           <h3>Image Url</h3>
+           <pre>1. Copy and paste image address ending jpg</pre>
+            <pre>2. Url cannot be too lengthy</pre>  
          <form onSubmit={this.props.handleSubmit}>
         <TextField
           id="standard-name"
