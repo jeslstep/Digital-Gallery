@@ -1,26 +1,6 @@
 const express = require('express');
 const router = express.Router();
-// const galleryItems = require('../modules/gallery.data');
-const pg = require('pg');
-
-// DO NOT MODIFY THIS FILE FOR BASE MODE
-// DB CONNECTION
-const config = {
-    database: 'picture-share-like',
-    host: 'localhost',
-    port: 5432,
-    max: 10,
-    idleTimeoutMillis: 30000
-};
-const pool = new pg.Pool(config);
-
-pool.on("connect", () => {
-    console.log('connected');
-});
-
-pool.on("error", (err) => {
-    console.log('not connected', err);
-});
+const pool = require('../modules/pool');
 
 // DELETE
 router.delete('/delete/:id', (req, res) => {
