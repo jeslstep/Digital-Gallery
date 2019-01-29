@@ -7,7 +7,7 @@
 /coverage
 
 # production
-/build
+
 #firebase
 /src/firebase/api_key.js
 # misc
